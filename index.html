@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>State Testing Study Resources</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+  <header class="bg-blue-700 text-white p-6 shadow-lg sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <h1 class="text-2xl font-bold">State Test Prep Hub</h1>
+      <nav class="space-x-6">
+        <a href="#resources" class="hover:underline">Resources</a>
+        <a href="#practice" class="hover:underline">Practice Tests</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="relative h-96 bg-gray-200">
+    <img src="statetesting.png" alt="Students studying" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="text-center text-white">
+        <h2 class="text-4xl font-bold mb-4 animate-fadeIn">Prepare with Confidence</h2>
+        <p class="text-lg">Free resources and practice tools to help you succeed on state exams.</p>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-6xl mx-auto py-12 px-4 space-y-16">
+    <section id="resources" class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl shadow hover:shadow-xl transition p-6">
+        <img src="books.png" alt="Books" class="rounded-xl mb-4">
+        <h3 class="text-xl font-semibold mb-2">Study Guides</h3>
+        <p>Download comprehensive study guides for math, reading, and science.</p>
+        <a href="#" class="text-blue-700 mt-3 inline-block hover:underline">Download Guides →</a>
+      </div>
+      <div class="bg-white rounded-2xl shadow hover:shadow-xl transition p-6">
+        <img src="laptop.png" alt="Laptop" class="rounded-xl mb-4">
+        <h3 class="text-xl font-semibold mb-2">Interactive Lessons</h3>
+        <p>Engage with video lessons and quizzes to reinforce core concepts.</p>
+        <a href="#" class="text-blue-700 mt-3 inline-block hover:underline">Start Learning →</a>
+      </div>
+      <div class="bg-white rounded-2xl shadow hover:shadow-xl transition p-6">
+        <img src="teacher.png" alt="Teacher" class="rounded-xl mb-4">
+        <h3 class="text-xl font-semibold mb-2">Teacher Resources</h3>
+        <p>Access classroom materials to support your students’ success.</p>
+        <a href="#" class="text-blue-700 mt-3 inline-block hover:underline">View Materials →</a>
+      </div>
+    </section>
+
+    <section id="practice" class="text-center">
+      <h2 class="text-3xl font-bold mb-6">Practice Tests</h2>
+      <p class="max-w-2xl mx-auto mb-8">Try sample questions modeled after official state exams. Track your progress and focus on the areas where you need the most improvement.</p>
+      <button onclick="startPractice()" class="bg-blue-700 text-white px-6 py-3 rounded-xl shadow hover:bg-blue-800">Take a Practice Test</button>
+      <div id="practice-container" class="mt-6 hidden max-w-2xl mx-auto bg-white shadow rounded-xl p-6 text-left">
+        <h3 class="text-xl font-semibold mb-4">Sample Question</h3>
+        <p class="mb-4">What is 7 × 8?</p>
+        <div class="space-y-2">
+          <button onclick="checkAnswer(54)" class="block w-full text-left border p-3 rounded hover:bg-gray-100">54</button>
+          <button onclick="checkAnswer(56)" class="block w-full text-left border p-3 rounded hover:bg-gray-100">56</button>
+          <button onclick="checkAnswer(64)" class="block w-full text-left border p-3 rounded hover:bg-gray-100">64</button>
+        </div>
+        <p id="result" class="mt-4 font-semibold"></p>
+      </div>
+    </section>
+
+    <section id="contact" class="bg-gray-100 rounded-2xl p-8">
+      <h2 class="text-2xl font-bold mb-4">Contact Us</h2>
+      <form class="grid gap-4 max-w-xl" id="contactForm">
+        <input type="text" placeholder="Your Name" class="p-3 rounded border" required>
+        <input type="email" placeholder="Your Email" class="p-3 rounded border" required>
+        <textarea placeholder="Your Message" class="p-3 rounded border h-32" required></textarea>
+        <button type="submit" class="bg-blue-700 text-white px-6 py-3 rounded-xl hover:bg-blue-800">Send Message</button>
+      </form>
+      <p id="formMessage" class="mt-4 text-green-600 font-semibold hidden">✅ Message sent successfully!</p>
+    </section>
+  </main>
+
+  <footer class="bg-blue-700 text-white text-center p-6 mt-12">
+    <p>&copy; 2025 State Test Prep Hub. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function startPractice() {
+      document.getElementById("practice-container").classList.remove("hidden");
+    }
+
+    function checkAnswer(answer) {
+      const result = document.getElementById("result");
+      if (answer === 56) {
+        result.textContent = "✅ Correct!";
+        result.className = "mt-4 font-semibold text-green-600";
+      } else {
+        result.textContent = "❌ Incorrect, try again.";
+        result.className = "mt-4 font-semibold text-red-600";
+      }
+    }
+
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("formMessage").classList.remove("hidden");
+      this.reset();
+    });
+  </script>
+</body>
+</html>
